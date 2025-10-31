@@ -25,6 +25,7 @@
         android:id="@+id/buttonContagem"
         android:layout_width="355dp"
         android:layout_height="76dp"
+        android:onClick="goContagemActivity"
         android:text="CONTAGEM"
         android:textSize="24sp"
         android:textStyle="bold"

@@ -24,4 +24,9 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, AritimeticaActivity::class.java)
         startActivity(intent)
     }
+
+    fun goContagemActivity(view: View){
+        val intent = Intent(this, ContagemActivity::class.java)
+        startActivity(intent)
+    }
 }
