@@ -53,6 +53,7 @@
         android:id="@+id/buttonMaior"
         android:layout_width="351dp"
         android:layout_height="79dp"
+        android:onClick="goMaiorNumero"
         android:text="MAIOR NÚMERO"
         android:textSize="24sp"
         android:textStyle="bold"
