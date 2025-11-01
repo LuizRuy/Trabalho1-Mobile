@@ -19,7 +19,8 @@ class AritimeticaActivity : AppCompatActivity() {
     private lateinit var buttonResposta: Button
     private lateinit var rodada: TextView
     private lateinit var operador: TextView
-    private var rodadaAtual = 0
+    private lateinit var perguntasDaPartida: List<Operacao>
+    private var indiceAtual = 0
     private var acertos = 0
     private val maxRodadas = 5
     private var respostaCorreta = 0
@@ -36,7 +37,7 @@ class AritimeticaActivity : AppCompatActivity() {
         rodada = findViewById<TextView>(R.id.textViewRodada)
         operador = findViewById<TextView>(R.id.textOperador)
 
-        proximaRodada()
+        iniciarPartida()
 
         buttonResposta.setOnClickListener {
             verificarResposta()
@@ -48,32 +49,48 @@ class AritimeticaActivity : AppCompatActivity() {
         }
     }
 
+    private fun iniciarPartida() {
+        acertos = 0
+        indiceAtual = 0
+
+        val todasAsOperacoes = gerarTodasAsOperacoesUnicas()
+
+        perguntasDaPartida = todasAsOperacoes.shuffled().take(maxRodadas)
+
+        proximaRodada()
+    }
+
+    private fun gerarTodasAsOperacoesUnicas(): List<Operacao> {
+        val operacoes = mutableSetOf<Operacao>()
+        val numeros = 0..9
+
+        for (n1 in numeros) {
+            for (n2 in numeros) {
+                operacoes.add(Operacao(n1, n2, '+', n1 + n2))
+                operacoes.add(Operacao(n1, n2, '-', n1 - n2))
+            }
+        }
+        return operacoes.toList()
+    }
+
     private fun proximaRodada() {
-        if(rodadaAtual == maxRodadas){
+        if(indiceAtual >= maxRodadas){
             finalizarJogo()
             return
         }
-        rodadaAtual++
-        rodada.text = "Rodada: $rodadaAtual/$maxRodadas"
 
-        //Garantir que os numeros nunca se repitam
-        val op1 = (0..9).random()
-        val op2 = (0..9).random()
-        val isSoma = Random.nextBoolean()
+        val perguntaAtual = perguntasDaPartida[indiceAtual]
+        val rodadaAtualParaExibicao = indiceAtual + 1
+        rodada.text = "Rodada: $rodadaAtualParaExibicao/$maxRodadas"
 
-        numero1.text = op1.toString()
-        numero2.text = op2.toString()
+        numero1.text = perguntaAtual.op1.toString()
+        numero2.text = perguntaAtual.op2.toString()
+        operador.text = perguntaAtual.operador.toString()
+        respostaCorreta = perguntaAtual.resultado
 
         resposta.text.clear()
 
-        if(isSoma){
-            operador.text = "+"
-            respostaCorreta = op1 + op2
-        }else{
-            operador.text = "-"
-            respostaCorreta = op1 - op2
-
-        }
+        indiceAtual++
 
     }
 
