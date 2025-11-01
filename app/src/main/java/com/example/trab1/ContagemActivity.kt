@@ -50,7 +50,15 @@ class ContagemActivity : AppCompatActivity() {
         todasAsPerguntas = listOf(
             Pergunta(R.drawable.img1, 3),
             Pergunta(R.drawable.img2, 7),
-            Pergunta(R.drawable.img3, 11)
+            Pergunta(R.drawable.img3, 11),
+            Pergunta(R.drawable.img4, 5),
+            Pergunta(R.drawable.img5, 4),
+            Pergunta(R.drawable.img6, 2),
+            Pergunta(R.drawable.img7, 9),
+            Pergunta(R.drawable.img8, 1),
+            Pergunta(R.drawable.img9, 6),
+            Pergunta(R.drawable.img10, 14)
+
 
         )
     }
@@ -67,9 +75,10 @@ class ContagemActivity : AppCompatActivity() {
             finalizarJogo()
             return
         }
+        val indiceProximaPergunta = rodadaAtual
         rodadaAtual++
         textViewRodada.text = "Rodada: $rodadaAtual/$maxRodadas"
-        val perguntaAtual = perguntasDaPartida[rodadaAtual]
+        val perguntaAtual = perguntasDaPartida[indiceProximaPergunta]
         imageViewFigura.setImageResource(perguntaAtual.idImagen)
 
         val respostaCerta = perguntaAtual.respostaCorreta
