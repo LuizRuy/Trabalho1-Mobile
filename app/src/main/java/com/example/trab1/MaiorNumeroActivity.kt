@@ -18,6 +18,7 @@ class MaiorNumeroActivity : AppCompatActivity() {
     private lateinit var resposta: EditText
     private lateinit var buttonResposta: Button
     private lateinit var rodada: TextView
+    private val combosUsados = mutableSetOf<List<Int>>()
     private var rodadaAtual = 0
     private var acertos = 0
     private val maxRodadas = 5
@@ -57,10 +58,23 @@ class MaiorNumeroActivity : AppCompatActivity() {
         rodadaAtual++
         rodada.text = "Rodada: $rodadaAtual/$maxRodadas"
 
-        //Validar numeros repetidos
-        val num1 = (0..9).random()
-        val num2 = (0..9).random()
-        val num3 = (0..9).random()
+
+        var numeros: List<Int>
+        var tentativas = 0
+        do {
+            val num1 = (0..9).random()
+            val num2 = (0..9).random()
+            val num3 = (0..9).random()
+            numeros = listOf(num1, num2, num3)
+            tentativas++
+            if (tentativas > 500) break
+        } while (combosUsados.contains(numeros))
+
+        combosUsados.add(numeros)
+
+        val num1 = numeros[0]
+        val num2 = numeros[1]
+        val num3 = numeros[2]
 
         numero1.text = num1.toString()
         numero2.text = num2.toString()
