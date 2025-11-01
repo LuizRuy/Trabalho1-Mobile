@@ -27,6 +27,9 @@ class MainActivity : AppCompatActivity() {
 
     fun goContagemActivity(view: View){
         val intent = Intent(this, ContagemActivity::class.java)
+        startActivity(intent)
+    }
+
     fun goMaiorNumero(view: View){
         val intent = Intent(this, MaiorNumeroActivity::class.java)
         startActivity(intent)

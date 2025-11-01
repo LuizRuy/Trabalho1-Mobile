@@ -13,6 +13,8 @@
         android:theme="@style/Theme.Trab1">
         <activity
             android:name=".ContagemActivity"
+            android:exported="false" />
+        <activity
             android:name=".MaiorNumeroActivity"
             android:exported="false" />
         <activity
