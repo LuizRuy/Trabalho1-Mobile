@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Trab1">
         <activity
+            android:name=".MaiorNumeroActivity"
+            android:exported="false" />
+        <activity
             android:name=".AritimeticaActivity"
             android:exported="false" />
         <activity

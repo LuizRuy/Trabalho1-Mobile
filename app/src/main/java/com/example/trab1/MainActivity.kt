@@ -24,4 +24,9 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, AritimeticaActivity::class.java)
         startActivity(intent)
     }
+
+    fun goMaiorNumero(view: View){
+        val intent = Intent(this, MaiorNumeroActivity::class.java)
+        startActivity(intent)
+    }
 }
