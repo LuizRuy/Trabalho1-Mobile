@@ -75,6 +75,7 @@
         android:id="@+id/buttonResp"
         android:layout_width="192dp"
         android:layout_height="57dp"
+        android:backgroundTint="#009688"
         android:text="Responder"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

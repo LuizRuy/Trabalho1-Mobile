@@ -85,8 +85,10 @@ class ContagemActivity : AppCompatActivity() {
         val opcoes = mutableListOf(respostaCerta)
 
         while(opcoes.size < 3){
-            val respostaErrada = Random.nextInt(1,20)
-            opcoes.add(respostaErrada)
+            val respostaErrada = Random.nextInt(1,15)
+            if (respostaErrada !in opcoes) {
+                opcoes.add(respostaErrada)
+            }
         }
 
         val opcoesAleatorias = opcoes.shuffled()
