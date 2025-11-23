@@ -61,7 +61,7 @@
         android:layout_width="128dp"
         android:layout_height="71dp"
         android:ems="10"
-        android:inputType="text"
+        android:inputType="numberSigned"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
